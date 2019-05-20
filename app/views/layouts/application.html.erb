@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <%= csrf_meta_tags %>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all',
+                             'data-turbolinks-track': 'reload' %>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag Ckeditor.cdn_url %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <% flash.each do |mess_type, mess| %>
+  <div class="alert alert-<%= mess_type %>"><%= mess %></div>
+  <%end%>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+</body>

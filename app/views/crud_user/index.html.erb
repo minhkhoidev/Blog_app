@@ -1,0 +1,14 @@
+<% provide(:title,"Users") %>
+<div class="container">
+<div class="row">
+<div class="a">
+  <% @users.each do |u| %>
+  <p>
+    <%= avatar_for(u)%>
+    <%= link_to u.name, crud_user_show_path(u) %>
+  </p>
+  <% end %>
+  <%= will_paginate @users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+</div>
+</div>
+</div>

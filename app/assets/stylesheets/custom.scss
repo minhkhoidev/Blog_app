@@ -1,0 +1,63 @@
+@import "bootstrap";
+
+.timestamp{
+  font-size: small;
+  color: gray;
+}
+
+.title{
+  font-size: 32px;
+  color: black
+}
+
+.content{
+  font-size: 18px;
+  color: black;
+}
+
+.stats{
+  font-size: 20px;
+}
+
+.avatar{
+  max-height: 100px;
+  max-width: 150px;
+}
+
+.space{
+  padding: 0px !important;
+  max-width: 60%;
+}
+
+.posts{
+  padding: 0px !important;
+  list-style: none;
+  margin: 0px;
+  max-width: 700px;
+}
+
+.row.custom-row{
+  margin-right: 15px;
+}
+
+.form-post{
+  padding-left: 10px
+}
+
+.comment-area{
+  background-color: rgb(220,220,220);
+  margin-top: 2px;
+}
+
+.like{
+  width: 8%;
+  border-color: rgb(211,211,211);
+  a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(211,211,211);
+  }
+  span{
+    color: rgb(170,170,170);
+    text-decoration-color: rgb(170,170,170);
+  }
+}

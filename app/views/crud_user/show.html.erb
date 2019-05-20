@@ -1,0 +1,43 @@
+<% provide(:title,'show') %>
+<div class="container-fuild">
+  <div class='row custom-row'>
+    <div class='col-md-4'>
+  <h1 class='text-center'>
+    <%= @user.name %><br>
+    <%= avatar_for(@user) %>
+  </h1>
+    <%= render 'shared/stats' %>
+    <%= render 'follow_form' if user_signed_in? %>
+    <% if @user == current_user %>
+    <%= form_for :micropost, url: {action: :create, controller: :microposts}, method: :post  do |f|%>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'w-100' %><br>
+      <%= f.label :content %>
+      <%= f.cktext_area :content, ckeditor: { language: 'vn'}, class: 'w-100' %>
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
+    <% end %>
+    <% end %>
+
+    </div>
+    <div class="col-md-8 ">
+      <% if @user.microposts.any? %>
+      <h2>  microposts (<%= @user.microposts.count %>) </h2> 
+        <ul class="posts" >
+          <% @microposts.each  do |post| %>
+          <li id="micropost-<%= post.id %>" class='micropost'>
+            <%= link_to avatar_for(@user), crud_user_show_path(@user), class: 'float-left' %><br>
+            <div class='micropost'>
+            <span class="title text-center"><%= link_to post.title, post %></span><br>
+            <span class="timestamp">
+              Posted <%= time_ago_in_words(post.created_at) %> ago.
+            </span>
+            <span><%= image_tag 'like.png' %> <%= post.likes.count %></span>
+            <div>
+          </li>
+          <% end %>
+        </ul>
+        <%= will_paginate @microposts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+      <% end %>
+    </div>
+  </div>
+</div>

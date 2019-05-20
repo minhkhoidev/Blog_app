@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1> <%= @post.title %> </h1>
+      <%= raw @post.content%>
+      <% @post.comments.each do |comment| %>
+      <div class='comment-area'>
+        <%= link_to comment.user.name, crud_user_show_path(comment.user), class:'user-comment' %>
+        <span><%= comment.content %></span>
+        <span class='timestamp'>
+          Posted <%= time_ago_in_words comment.created_at %>
+        </span>
+      </div>
+      <% end %>
+      <div class='like'>
+          <% if current_user.like? @post %>
+            <%= form_for current_user.likes.find_by(micropost_id: @post.id), method: :delete do |f| %>
+              <%= hidden_field_tag :post_id, @post.id %>
+              <%= image_submit_tag "like.png" %>
+            <% end %>
+          <% else %>
+            <%= form_for current_user.likes.build do |f|  %>
+             <%= hidden_field_tag :post_id, @post.id %>
+              <%= image_submit_tag "unlike.png" %>
+            <% end %>
+          <% end %>
+      </div>
+      <%= render 'comments/form_comment' %>
+    </div>
+  </div>
+</div>
