@@ -24,6 +24,10 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def destroy
+    redirect_to crud_user_show_path(current_user) if Micropost.find_by_id(params[:id]).destroy
+  end
+
   private
 
   def micropost_params
