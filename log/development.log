@@ -34238,3 +34238,726 @@ Processing by CrudUserController#show as
 Completed 200 OK in 288ms (Views: 268.1ms | ActiveRecord: 10.5ms)
 
 
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:51:38 +0700
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (1.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mMicropost Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered comments/_form_comment.html.erb (160.2ms)
+  Rendered microposts/show.html.erb within layouts/application (636.9ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1031ms (Views: 962.8ms | ActiveRecord: 23.4ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:56:29 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered comments/_form_comment.html.erb (13.7ms)
+  Rendered microposts/show.html.erb within layouts/application (59.4ms)
+  Rendered layouts/_header.html.erb (2.8ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 234ms (Views: 171.5ms | ActiveRecord: 23.8ms)
+
+
+Started POST "/comments" for ::1 at 2019-05-20 17:56:37 +0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y3wG53lXf4XS0+lKnm3V9hJh6WyKamQoniH05AoHg9RTwro2VtODxznDchSA+OMLuM52Ez1EE+nnTI2TIdTE4A==", "post_id"=>"109", "comment"=>{"content"=>"aaaaaaaaa"}, "commit"=>"Create Comment"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.7ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "micropost_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["micropost_id", 109], ["content", "aaaaaaaaa"], ["created_at", "2019-05-20 10:56:37.340883"], ["updated_at", "2019-05-20 10:56:37.340883"]]
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[35m (19.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:7
+Redirected to http://localhost:3000/microposts/109
+Completed 302 Found in 41ms (ActiveRecord: 22.9ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:56:37 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered comments/_form_comment.html.erb (3.6ms)
+  Rendered microposts/show.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 138ms (Views: 132.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/comments" for ::1 at 2019-05-20 17:56:41 +0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9z0WiHHaAELJdoJBfX5irSOrkbNTxfvfYX5/XE7VtIHHg6pZXl78ACJmGR9j61RQiQQOzOTrjB4YEwYrZQbztQ==", "post_id"=>"109", "comment"=>{"content"=>"fffffffff"}, "commit"=>"Create Comment"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.5ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[36mComment Create (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "micropost_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["micropost_id", 109], ["content", "fffffffff"], ["created_at", "2019-05-20 10:56:41.265716"], ["updated_at", "2019-05-20 10:56:41.265716"]]
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:7
+Redirected to http://localhost:3000/microposts/109
+Completed 302 Found in 53ms (ActiveRecord: 43.0ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:56:41 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.8ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mMicropost Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered comments/_form_comment.html.erb (2.4ms)
+  Rendered microposts/show.html.erb within layouts/application (15.3ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 118ms (Views: 109.0ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/comments" for ::1 at 2019-05-20 17:56:43 +0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qZFZRk/oLQP8p/AuLb8wkqGEA2gL/T1rt/knN143iaaZL+WXYGzRQRe3a3AzKgZvCyucF7zTSqrOlF5AdeTOkg==", "post_id"=>"109", "comment"=>{"content"=>"vvvvvvvvvvv"}, "commit"=>"Create Comment"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[36mComment Create (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("user_id", "micropost_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["micropost_id", 109], ["content", "vvvvvvvvvvv"], ["created_at", "2019-05-20 10:56:43.947602"], ["updated_at", "2019-05-20 10:56:43.947602"]]
+  ↳ app/controllers/comments_controller.rb:7
+  [1m[35m (35.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:7
+Redirected to http://localhost:3000/microposts/109
+Completed 302 Found in 48ms (ActiveRecord: 37.4ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:56:43 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:8
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered comments/_form_comment.html.erb (3.4ms)
+  Rendered microposts/show.html.erb within layouts/application (16.5ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 123ms (Views: 113.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 17:59:52 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:6
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  Rendered microposts/show.html.erb within layouts/application (677.3ms)
+Completed 500 Internal Server Error in 759ms (ActiveRecord: 17.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007fd15e2e0310>:0x00007fd15e2eb558>
+Did you mean?  comment_url):
+    20:           <% end %>
+    21:       </div>
+    22:       <div class='comment-area'>
+    23:         <%= link_to comment.user.name, crud_user_show_path(comment.user), class:'user-comment' %>
+    24:         <span><%= comment.content %></span>
+    25:         <span class='timestamp'>
+    26:           Posted <%= time_ago_in_words comment.created_at %>
+  
+app/views/microposts/show.html.erb:23:in `_app_views_microposts_show_html_erb__4420748126716403430_70268602485980'
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:00:20 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  Rendered comments/_form_comment.html.erb (2.6ms)
+  Rendered microposts/show.html.erb within layouts/application (35.0ms)
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 211ms (Views: 201.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:02:12 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  Rendered comments/_form_comment.html.erb (3.6ms)
+  Rendered microposts/show.html.erb within layouts/application (24.6ms)
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 215ms (Views: 204.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:02:15 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  Rendered comments/_form_comment.html.erb (2.9ms)
+  Rendered microposts/show.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_header.html.erb (4.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 136ms (Views: 128.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:02:27 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  Rendered comments/_form_comment.html.erb (3.5ms)
+  Rendered microposts/show.html.erb within layouts/application (19.1ms)
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 135ms (Views: 129.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/microa" for ::1 at 2019-05-20 18:03:39 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/microa"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/method_override.rb:22:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2019-05-20 18:05:42 +0700
+Processing by CrudUserController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering crud_user/show.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = $1[0m  [["follower_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = $1[0m  [["followed_id", 1]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (10.3ms)
+  Rendered crud_user/_follow_form.html.erb (0.7ms)
+  [1m[36mMicropost Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" WHERE "microposts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/views/crud_user/show.html.erb:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/crud_user/show.html.erb:24
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."user_id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["user_id", 1], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/views/crud_user/show.html.erb:26
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 103]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 97]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 91]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 85]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 79]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 73]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 67]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 61]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."micropost_id" = $1[0m  [["micropost_id", 55]]
+  ↳ app/views/crud_user/show.html.erb:37
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "microposts" WHERE "microposts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/crud_user/show.html.erb:42
+  Rendered crud_user/show.html.erb within layouts/application (73.7ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 171ms (Views: 156.0ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:05:44 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  Rendered microposts/show.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+SyntaxError (/home/bon/blog_app/app/views/microposts/show.html.erb:38: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/microposts/show.html.erb:38: syntax error, unexpected end-of-input, expecting end
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:06:20 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (2.4ms)
+  Rendered microposts/show.html.erb within layouts/application (32.1ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 130ms (Views: 121.0ms | ActiveRecord: 4.4ms)
+
+
+Started DELETE "/comments/4" for ::1 at 2019-05-20 18:06:25 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zUesSPF/Yio5raW1ccBWfvf3mIYgrrGQd2ZYKTlOvnH9+RCZ3vueaNK9PutvVWCDXVgH+ZeAxlEOCyFeEp35RQ==", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" IS NULL ORDER BY "microposts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+No template found for CommentsController#destroy, rendering head :no_content
+Completed 204 No Content in 54ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:08:03 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.6ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (2.8ms)
+  Rendered microposts/show.html.erb within layouts/application (89.7ms)
+  Rendered layouts/_header.html.erb (4.4ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 331ms (Views: 255.5ms | ActiveRecord: 31.7ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:08:07 +0700
+  
+SyntaxError (/home/bon/blog_app/app/controllers/comments_controller.rb:21: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/comments_controller.rb:21: syntax error, unexpected end-of-input, expecting end
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:08:18 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.2ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (3.5ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (3.4ms)
+  Rendered microposts/show.html.erb within layouts/application (65.2ms)
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 248ms (Views: 185.0ms | ActiveRecord: 26.9ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:08:20 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UU3ByDx8lnEMjCkVi+iScgocE6C9o7K/30l5i4Bqqlxh830ZE/hqM+ecskuVfaSPoLOM3wqNxX6mJAD8q7ntaA==", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" IS NULL ORDER BY "microposts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:12:in `destroy'
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:10:37 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.3ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (2.5ms)
+  Rendered microposts/show.html.erb within layouts/application (63.3ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 241ms (Views: 185.4ms | ActiveRecord: 22.9ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:10:39 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+UMqDdRO+ljyuen6e/4Ly3kShsfoz2p13StTIltaPLTJ/Zbc+8oGGhmpcqRlaz02070ZuF/hHbSkRipVcIl7gA==", "id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.6ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" IS NULL ORDER BY "microposts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.4ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:12:in `destroy'
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:10:43 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (1.9ms)
+  Rendered microposts/show.html.erb within layouts/application (31.7ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 138ms (Views: 124.4ms | ActiveRecord: 5.1ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:10:50 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CagU8yCsQJzEhbihKSqwQchWd7sxF3XPY3RPswpkxJA5FqgiDyi83i+VI/83v4a8YvnoxIY5Ag4aGTbEIbeDpA==", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" IS NULL ORDER BY "microposts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 8.7ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:12:in `destroy'
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:11:20 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (3.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (3.2ms)
+  Rendered microposts/show.html.erb within layouts/application (90.9ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.5ms)
+Completed 200 OK in 332ms (Views: 260.1ms | ActiveRecord: 29.7ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:11:22 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Vm21KPMU3c/s+0VRxr9m3F2VdMRXZVH5JKorZlFHwW1m0wn53JAhjQfr3g/YKlAh9zrru+BLJjhdx1IRepSGWQ==", "id"=>"3"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.5ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" IS NULL ORDER BY "microposts"."created_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.9ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/comments_controller.rb:12:in `destroy'
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:13:50 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.9ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (4.9ms)
+  Rendered microposts/show.html.erb within layouts/application (99.4ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 299ms (Views: 219.8ms | ActiveRecord: 34.7ms)
+
+
+Started DELETE "/comments/3" for ::1 at 2019-05-20 18:13:53 +0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0InH+u+W+crhC12ltPOyw2Y9cUf1983gq5PN2B6ehmHgN3srwBIFiAobxvuqZoQ+zJLuOELZuiHS/rSvNU3BVQ==", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:12
+  [1m[36mComment Destroy (0.8ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/comments_controller.rb:12
+  [1m[35m (30.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:12
+Redirected to http://localhost:3000/microposts/109
+Completed 302 Found in 32149ms (ActiveRecord: 32.6ms)
+
+
+Started GET "/microposts/109" for ::1 at 2019-05-20 18:14:25 +0700
+Processing by MicropostsController#show as HTML
+  Parameters: {"id"=>"109"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/bon/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mMicropost Load (0.4ms)[0m  [1m[34mSELECT  "microposts".* FROM "microposts" WHERE "microposts"."id" = $1 ORDER BY "microposts"."created_at" DESC LIMIT $2[0m  [["id", 109], ["LIMIT", 1]]
+  ↳ app/controllers/microposts_controller.rb:5
+  Rendering microposts/show.html.erb within layouts/application
+  [1m[36mMicropost Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "microposts" INNER JOIN "likes" ON "microposts"."id" = "likes"."micropost_id" WHERE "likes"."user_id" = $1 AND "microposts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 109], ["LIMIT", 1]]
+  ↳ app/models/user.rb:44
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."micropost_id" = $1[0m  [["micropost_id", 109]]
+  ↳ app/views/microposts/show.html.erb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:22
+  [1m[36mComment Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."user_id" = $1 AND "comments"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 5], ["LIMIT", 1]]
+  ↳ app/views/microposts/show.html.erb:26
+  Rendered comments/_form_comment.html.erb (2.5ms)
+  Rendered microposts/show.html.erb within layouts/application (22.5ms)
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 151ms (Views: 143.4ms | ActiveRecord: 3.8ms)
+
+
