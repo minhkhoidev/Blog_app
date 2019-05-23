@@ -7,7 +7,7 @@
     <%= avatar_for(@user) %>
   </h1>
     <%= render 'shared/stats' %>
-    <%= render 'follow_form' if user_signed_in? %>
+    <%= render('follow_form', user: @user) if user_signed_in? %>
     <% if @user == current_user %>
     <%= form_for :micropost, url: {action: :create, controller: :microposts}, method: :post  do |f|%>
       <%= f.label :title %>
@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-8 ">
       <% if @user.microposts.any? %>
-      <h2>  microposts (<%= @user.microposts.count %>) </h2> 
+      <h2>  microposts (<%= @user.microposts.count %>) </h2>
         <ul class="posts" >
           <% @microposts.each  do |post| %>
           <li id="micropost-<%= post.id %>" class='micropost'>
@@ -35,6 +35,7 @@
               Posted <%= time_ago_in_words(post.created_at) %> ago.
             </span>
             <span><%= image_tag 'like.png' %> <%= post.likes.count %></span>
+            <span><%= image_tag 'comment.png' %> <%= post.comments.count %></span>
             <div>
           </li>
           <% end %>

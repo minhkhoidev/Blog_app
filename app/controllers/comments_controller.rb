@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
     if Comment.find_by_id(params[:id]).destroy
       redirect_back fallback_location: post
     end
-    byebug
   end
 
   private

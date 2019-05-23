@@ -22,7 +22,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :avatar, PictureUploader
   validates :name, presence: true
+  validate :avatar_size
 
   def follow(other_user)
     following << other_user
@@ -54,5 +56,9 @@ class User < ApplicationRecord
 
   def delete_comment(comment)
     comments.delete(comment)
+  end
+
+  def avatar_size
+    errors.add(:avatar, 'should be less than 5MB') if avatar.size > 5.megabytes
   end
 end
