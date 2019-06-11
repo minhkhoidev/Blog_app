@@ -11,17 +11,25 @@
   <title><%= yield(:title) %></title>
   <%= stylesheet_link_tag    'application', media: 'all',
                              'data-turbolinks-track': 'reload' %>
-  
+  <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans:400,800&display=swap" rel="stylesheet">
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag Ckeditor.cdn_url %>
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <% flash.each do |mess_type, mess| %>
-  <div class="alert alert-<%= mess_type %>"><%= mess %></div>
-  <%end%>
+  <div class='container'>
+  <div class='row'>
+  <div class='col-md-6 offset-md-3'>
+  <% if notice %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% if  alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
+  </div>
+  </div>
+  </div>
   <%= yield %>
   <%= render 'layouts/footer' %>
 </body>

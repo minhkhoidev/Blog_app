@@ -1,0 +1,13 @@
+<% provide('title', 'micropost') %>
+
+<div class='col-md-6 offset-md-3'>
+    <%= form_for :micropost, url: {action: :create, controller: :microposts}, method: :post  do |f|%>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'w-100' %><br>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'w-100' %><br>
+      <%= f.label :content %>
+      <%= f.cktext_area :content, ckeditor: { language: 'vn'}, class: 'w-100' %>
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
+  <% end %>
+  </div>

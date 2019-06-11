@@ -1,13 +1,62 @@
 @import "bootstrap";
 
 .timestamp{
-  font-size: small;
+  font-size: 18px;
   color: gray;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.timestamp.post{
+  font-size: 13px;
+  color: gray;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.micropost{
+  border-bottom: 0.5px solid rgba(100,100,100,0.4);
+  padding: 20px 0px;
 }
 
 .title{
-  font-size: 32px;
-  color: black
+  font-size: 36px;
+  font-weight: 800;
+  word-wrap: break-word;
+  font-family: 'Open Sans', sans-serif;
+  :link{
+    text-decoration: none;
+    color:  #212529;
+  }
+  :visited{
+    text-decoration: none;
+    color: #212529;
+  }
+  :hover{
+    text-decoration: none;
+    color: rgb(15, 145, 185);
+  }
+  :active{
+    text-decoration: none;
+    color: #212529;
+  }
+}
+
+.description{
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.timestamp .name{
+  font-style: normal;
+  color: #212529;
+  &:hover{
+    color: #0085a1 !important;
+  }
 }
 
 .content{
@@ -60,4 +109,13 @@
     color: rgb(170,170,170);
     text-decoration-color: rgb(170,170,170);
   }
+}
+
+.a-dropdown{
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }

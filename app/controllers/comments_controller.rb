@@ -2,15 +2,22 @@
 
 class CommentsController < ApplicationController
   def create
-    post = Micropost.find_by_id(params[:post_id])
-    comment = post.comments.build(comment_params)
-    redirect_back fallback_location: post if current_user.comments << comment
+    @post = Micropost.find_by_id(params[:micropost_id])
+    comment = @post.comments.build(comment_params)
+    current_user.comments << comment
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
+    end
   end
 
   def destroy
-    post = Micropost.find_by_id(params[:id])
-    if Comment.find_by_id(params[:id]).destroy
-      redirect_back fallback_location: post
+    @post = Micropost.find_by_id(params[:micropost_id])
+    comment = Comment.find_by_id(params[:id])
+    comment.destroy
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
     end
   end
 

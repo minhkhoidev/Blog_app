@@ -1,0 +1,24 @@
+<% provide(:title,'show') %>
+<div class="container">
+  <div class='row custom-row'>
+  <div class="col-md-8 offset-md-2">
+        <ul class="posts" >
+          <% @microposts.each  do |post| %>
+            <li id="micropost-<%= post.id %>">
+            <div class='micropost'>
+            <h1 class="title"><%= link_to post.title, post %></h1>
+            <h3 class="description"><%= post.description %></h3>
+            <span class="timestamp">
+              Posted <%= time_ago_in_words(post.created_at) %> ago by
+              <%= link_to post.user.name, crud_users_show_path(:id => post.user.id), class: 'name' %>
+            </span>
+            <span><%= image_tag 'like.png' %> <%= post.likes.count %></span>
+            <span><%= image_tag 'comment.png' %> <%= post.comments.count %></span>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+        <%= will_paginate @microposts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+    </div>
+  </div>
+</div>

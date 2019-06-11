@@ -26,6 +26,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validate :avatar_size
 
+  DEFAULT_AVATAR = 'empty-avatar.png'
+
   def follow(other_user)
     following << other_user
   end
@@ -48,14 +50,6 @@ class User < ApplicationRecord
 
   def unlike(post)
     liking_posts.delete(post)
-  end
-
-  # def comment(comment)
-  #   comments << comment
-  # end
-
-  def delete_comment(comment)
-    comments.delete(comment)
   end
 
   def avatar_size

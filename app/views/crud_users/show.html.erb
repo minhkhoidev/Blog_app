@@ -1,0 +1,35 @@
+<% provide(:title,'show') %>
+<div class="container">
+  <div class='row custom-row'>
+  <div class='col-md-2 '>
+    <div class='intro'>
+      <h1 class='text-center'>
+        <%= @user.name %><br>
+        <%= image_tag(avatar_for(@user), alt: @user.name, class: 'avatar') %>
+      </h1>
+      <%= render 'shared/stats' %>
+    </div>
+    </div>
+  <div class="col-md-8">
+    <%= render('follow_form', user: @user) if user_signed_in? %>
+      <% if @user.microposts.any? %>
+        <ul class="posts" >
+          <% @microposts.each  do |post| %>
+            <li id="micropost-<%= post.id %>">
+            <div class='micropost'>
+            <h1 class="title"><%= link_to post.title, post %></h1>
+            <h3 class="description"><%= post.description %></h3>
+            <span class="timestamp">
+              Posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %>.
+            </span>
+            <span><%= image_tag 'like.png' %> <%= post.likes.count %></span>
+            <span><%= image_tag 'comment.png' %> <%= post.comments.count %></span>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+        <%= will_paginate @microposts, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+      <% end %>
+    </div>
+  </div>
+</div>

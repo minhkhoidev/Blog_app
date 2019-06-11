@@ -1,0 +1,15 @@
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <div class='comment-area'>
+      <%= link_to comment.user.name, crud_users_show_path(comment.user), class:'user-comment' %>
+      <span><%= comment.content %></span>
+      <span class='timestamp post'>
+        Posted <%= time_ago_in_words comment.created_at %>
+      <% if current_user.comments.include?(comment) %>
+        <%= link_to 'delete', comment_path( comment,micropost_id: @post.id),
+                                         method: :delete, remote: true, class:'float-right' %>
+      <% end %>
+      </span>
+    </div>
+  <% end %>
+<% end %>

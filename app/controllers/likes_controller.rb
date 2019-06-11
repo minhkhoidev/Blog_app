@@ -2,12 +2,20 @@
 
 class LikesController < ApplicationController
   def create
-    post = Micropost.find_by_id(params[:post_id])
-    redirect_back fallback_location: @post if current_user.like(post)
+    @post = Micropost.find_by_id(params[:micropost_id])
+    current_user.like(@post)
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
+    end
   end
 
   def destroy
-    post = Micropost.find_by_id(params[:post_id])
-    redirect_back fallback_location: @post if current_user.unlike(post)
+    @post = Micropost.find_by_id(params[:micropost_id])
+    current_user.unlike(@post)
+    respond_to do |format|
+      format.html { redirect_to @post }
+      format.js
+    end
   end
 end
