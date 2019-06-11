@@ -11,12 +11,13 @@ class User::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   # def create
   #   super
-  #   redirect_to
+  #   redirect_to crud_user_show_path
   # end
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
+  #   #super
+  #   redirect_to new_user_session_path
   # end
 
   # protected

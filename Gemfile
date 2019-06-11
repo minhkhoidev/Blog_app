@@ -32,7 +32,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'faker'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -47,6 +47,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'rails-controller-testing'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -6,8 +6,10 @@ class Micropost < ApplicationRecord
   has_many :likes
   has_many :liking_users, through: :likes, source: :user
   has_many :comments
-  has_many :commenting_user, through: :comments, source: :user
+  has_many :commenting_users, through: :comments, source: :user
 
   validates :title, presence: true
   validates :content, presence: true
+  validates :description, presence: true
+  validates :user_id, presence: true
 end

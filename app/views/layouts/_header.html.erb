@@ -2,7 +2,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <%= link_to 'Start Bootstrap', authenticated_root_path, class: 'navbar-brand' %>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -10,17 +10,18 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to 'Users', crud_user_index_path,class: 'nav-link' %>
+            <%= link_to 'Users', crud_users_index_path,class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%  if user_signed_in? %>
               <div class="dropdown">
-                <button class="dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p class='nav-item a-dropdown' href=''  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= current_user.name  %>
-                </button>
+                </p>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <%= link_to 'Profile', crud_user_show_path(current_user), class: 'dropdown-item nav-link' %>
+                  <%= link_to 'Profile', crud_users_show_path(:id => current_user.id), class: 'dropdown-item nav-link' %>
                   <%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'dropdown-item nav-link'  %>
+                  <%= link_to 'Create post', new_micropost_path, class: 'dropdown-item nav-link'  %>
                 <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item nav-link'  %>
                 </div>
               </div>

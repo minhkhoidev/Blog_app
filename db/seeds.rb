@@ -20,8 +20,9 @@ end
 users = User.order(:created_at).take(6)
 20.times do
   title = Faker::Lorem.sentence(5)
+  description = Faker::Lorem.sentence(5)
   content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content, title: title) }
+  users.each { |user| user.microposts.create!(content: content, title: title, description: description) }
 end
 
 # follow
