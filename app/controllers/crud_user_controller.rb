@@ -6,7 +6,7 @@ class CrudUserController < ApplicationController
   end
 
   def show
-    @user = if params[:id].nil?
+    @user = if params[:format].nil?
               current_user
             else
               User.find_by_id(params[:format])

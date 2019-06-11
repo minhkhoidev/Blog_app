@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root 'crud_user#show'
   get 'relationships/create'
   get 'relationships/destroy'
